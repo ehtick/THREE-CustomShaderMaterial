@@ -26,6 +26,10 @@ import { Scene as ShadowsScene } from "./Shadows/Scene";
 import fs_shadows from "./Shadows/fs.glsl?raw";
 import vs_shadows from "./Shadows/vs.glsl?raw";
 
+import { Scene as BumpScene } from "./Bump/Scene";
+import fs_bump from "./Bump/fs.glsl?raw";
+import vs_bump from "./Bump/vs.glsl?raw";
+
 export interface ExampleSceneProps {
   fs: string;
   vs: string;
@@ -95,6 +99,14 @@ export const SHADERS: {
     slug: "shadows",
     Component: ShadowsScene,
     label: "Shadows",
+    category: "Tech Demos",
+  },
+  BUMP: {
+    fs: fs_bump,
+    vs: vs_bump,
+    slug: "bump",
+    Component: BumpScene,
+    label: "Bump",
     category: "Tech Demos",
   },
   // METAL_BUNNY: {

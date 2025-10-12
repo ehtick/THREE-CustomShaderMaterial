@@ -133,7 +133,6 @@ CSM provides the following output variables, all of them are optional but you MU
 | csm_Roughness                     | `float` | Custom roughness.                                          | Fragment Shader                                 | Only available in materials with an `roughnessMap`.                                                                                                            |
 | csm_Metalness                     | `float` | Custom metalness.                                          | Fragment Shader                                 | Only available in materials with an `metalnessMap`.                                                                                                            |
 | csm_AO                            | `float` | Custom AO.                                                 | Fragment Shader                                 | Only available in materials with an `aoMap`.                                                                                                                   |
-| csm_Bump                          | `vec3`  | Custom bump as perturbation to fragment normals.           | Fragment Shader                                 | Only available in materials with a `bumpMap`.                                                                                                                  |
 | csm_Clearcoat                     | `float` | Custom clearcoat factor.                                   | Fragment Shader                                 | Only available in materials with a `clearcoat`.                                                                                                                |
 | csm_ClearcoatRoughness            | `float` | Custom clearcoat roughenss factor.                         | Fragment Shader                                 | Only available in materials with a `clearcoat`.                                                                                                                |
 | csm_ClearcoatNormal               | `vec3`  | Custom clearcoat normal.                                   | Fragment Shader                                 | Only available in materials with a `clearcoat`.                                                                                                                |
@@ -145,6 +144,10 @@ CSM provides the following output variables, all of them are optional but you MU
 | <h3>Fragmet Shader (Special)</h3> | -       | -                                                          | -                                               | -                                                                                                                                                              |
 | csm_DepthAlpha                    | `float` | Custom alpha for `MeshDepthMaterial`.                      | Fragment Shader                                 | Useful for controlling `customDepthMaterial` with same shader as the shader material.                                                                          |
 | csm_UnlitFac                      | `float` | Custom mix between `csm_DiffuseColor` and `csm_FragColor`. | Fragment Shader                                 | Can be used to mix lit and unlit materials. Set to `1.0` by default if `csm_FragColor` is found in shader string.                                              |
+
+## Bump mapping
+
+Bump mapping was removed in v6.4.0. This is becasue it cannot be implimented with a singular clean output variable. You can still impliment bump mapping by using `csm_FragNormal` output variable. See the [Bump example](https://farazzshaikh.github.io/THREE-CustomShaderMaterial/#/bump) for a full working example.
 
 ## Typing
 
@@ -161,6 +164,18 @@ const material = new CustomShaderMaterial<typeof THREE.MeshPhysicalMaterial>({
 <CustomShaderMaterial<typeof THREE.MeshPhysicalMaterial>
   baseMaterial={THREE.MeshPhysicalMaterial}
   //...Any props
+```
+
+### Typing React Refs
+
+You can type the ref of `CustomShaderMaterial` as follows:
+
+```tsx
+// NOTE: import from /vanilla module
+import CSM from "three-custom-shader-material/vanilla";
+import { MeshPhysicalMaterial } from "three";
+
+const ref = useRef<CSM<typeof MeshPhysicalMaterial>>(null!);
 ```
 
 ## Custom overrides

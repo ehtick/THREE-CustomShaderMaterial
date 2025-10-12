@@ -72,15 +72,6 @@ export const defaultPatchMap: CSMPatchMap = {
     reflectedLight.indirectDiffuse *= 1. - ${keywordMap.ao};
     `,
   },
-  [`${keywordMap.bump}`]: {
-    "#include <normal_fragment_maps>": `
-    #include <normal_fragment_maps>
-
-    vec3 csm_internal_orthogonal = ${keywordMap.bump} - (dot(${keywordMap.bump}, normal) * normal);
-    vec3 csm_internal_projectedbump = mat3(csm_internal_vModelViewMatrix) * csm_internal_orthogonal;
-    normal = normalize(normal - csm_internal_projectedbump);
-    `,
-  },
   [`${keywordMap.fragNormal}`]: {
     "#include <normal_fragment_maps>": `
       #include <normal_fragment_maps>

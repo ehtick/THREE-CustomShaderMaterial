@@ -35,9 +35,8 @@ export const defaultCsmDefinitions = /* glsl */ `
         float csm_AO;
     #endif
 
-    // csm_Bump
+    // csm_FragNormal
     #if defined IS_MESHLAMBERTMATERIAL || defined IS_MESHMATCAPMATERIAL || defined IS_MESHNORMALMATERIAL || defined IS_MESHPHONGMATERIAL || defined IS_MESHPHYSICALMATERIAL || defined IS_MESHSTANDARDMATERIAL || defined IS_MESHTOONMATERIAL || defined IS_SHADOWMATERIAL 
-        vec3 csm_Bump;
         vec3 csm_FragNormal;
     #endif
 
@@ -123,9 +122,7 @@ export const defaultCsmMainDefinitions = /* glsl */ `
         csm_AO = 0.0;
     #endif
 
-    // csm_Bump
     #if defined IS_MESHLAMBERTMATERIAL || defined IS_MESHMATCAPMATERIAL || defined IS_MESHNORMALMATERIAL || defined IS_MESHPHONGMATERIAL || defined IS_MESHPHYSICALMATERIAL || defined IS_MESHSTANDARDMATERIAL || defined IS_MESHTOONMATERIAL || defined IS_SHADOWMATERIAL 
-        csm_Bump = vec3(0.0);
         #ifdef FLAT_SHADED
             vec3 fdx = dFdx( vViewPosition );
             vec3 fdy = dFdy( vViewPosition );

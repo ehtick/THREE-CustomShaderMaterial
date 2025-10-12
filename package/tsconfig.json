@@ -4,7 +4,8 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
     "strict": true,
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "allowJs": true
   },
